@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e0b222ba4a444c248fc61db11c457ef2" Name="Diagram1">
+        <EntityTypeShape EntityType="BANKModel.CUENTAS" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANKModel.ROL" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANKModel.SALDO" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANKModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANKModel.USER" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANKModel.USUARIOS" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="BANKModel.FK_CUENTAS_USUARIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="BANKModel.FK_SALDO_CUENTAS" ManuallyRouted="false" />
+        <AssociationConnector Association="BANKModel.FK_USUARIOS_ROL" ManuallyRouted="false" />
+        <AssociationConnector Association="BANKModel.FK_USER_USUARIOS" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
