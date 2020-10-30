@@ -14,7 +14,132 @@ namespace WCFService
     public class Service1 : IService1
     {
         public int codeResult;
-       
+
+        public Result AddAmount(int idAccount, double valor)
+        {
+            try
+            {
+                using (var ctx = new BANKEntities())
+                {  
+                    codeResult = ctx.Database.ExecuteSqlCommand("UPDATE [SALDO] SET [saldo] = {0} WHERE [id_cuenta] = {1}", valor, idAccount);
+
+                    return new Result { codigo = codeResult, Mensaje = "OK" };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Result { codigo = 0, Mensaje = ex.Message };
+            }
+        }
+
+        public IEnumerable<CUENTAS> GetAccountbyId(string id)
+        {
+            try
+            {
+                using (var context = new Model.BANKEntities())
+                {
+                    var cuenta = new string[] { id };
+                    return context.CUENTAS.Where(p => cuenta.Contains(p.cuenta)).Select(p => new CUENTAS() { id = p.id, id_user = p.id_user, cuenta = p.cuenta });
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Result DelAccount(string idAccount)
+        {
+            using (var ctx = new Model.BANKEntities())
+            {
+                codeResult = ctx.Database.ExecuteSqlCommand("DELETE FROM [CUENTAS] WHERE [cuenta] = {0} ", idAccount);
+
+                return new Result { codigo = codeResult, Mensaje = "OK" };
+            }
+        }
+
+        public IEnumerable<SALDO> GetBalance(int idAccount)
+        {
+            try
+            {
+                using (var context = new Model.BANKEntities())
+                {
+                    var account = new int[] { idAccount };
+                    return context.SALDO.Where(p => account.Contains(p.id_cuenta)).Select(p => new SALDO() { saldo1 = p.saldo1, nuevo_saldo = p.nuevo_saldo });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Result RemoveAmount(int idAccount, double valor)
+        {
+            try
+            {
+                using (var ctx = new BANKEntities())
+                {
+                    codeResult = ctx.Database.ExecuteSqlCommand("UPDATE [SALDO] SET [nuevo_saldo] = {0} WHERE [id_cuenta] = {1}", valor, idAccount);
+
+                    return new Result { codigo = codeResult, Mensaje = "OK" };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Result { codigo = 0, Mensaje = ex.Message };
+            }
+        }
+
+        public int SetAccount(CUENTAS cuenta)
+        {
+            try
+            {
+                using (var context = new Model.BANKEntities())
+                {
+                    var newControl = new CUENTAS
+                    {
+                        id_user = cuenta.id_user,
+                        cuenta = cuenta.cuenta
+
+                    };
+
+                    context.CUENTAS.Add(newControl);
+                    context.SaveChanges();
+                    int id = (int)newControl.id;
+                    return id;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
+
+        public Result UptAccount(string idAccount, string numCuenta)
+        {
+            try
+            {
+                using (var ctx = new Model.BANKEntities())
+                {
+               
+                    ctx.CUENTAS.Where(s => s.cuenta == idAccount).ToList().ForEach(s => {
+                        s.cuenta = numCuenta;
+                    });
+
+                    //4. call SaveChanges
+                    codeResult = ctx.SaveChanges();
+                    return new Result { codigo = codeResult, Mensaje = "OK" };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Result { codigo = 0, Mensaje = ex.Message };
+            }
+        }
+
         IEnumerable<ROL> IService1.GetRolbyId(int id)
         {
             try

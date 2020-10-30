@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using WCFService.Model;
+using System.Threading;
 
 namespace WCFService
 {
@@ -14,32 +15,40 @@ namespace WCFService
     public interface IService1
     {
 
-
-        // TODO: agregue aquí sus operaciones de servicio
         [OperationContract]
         IEnumerable<ROL> GetRolbyId(int id);
+
+        [OperationContract]
+        IEnumerable<CUENTAS> GetAccountbyId(string id);
+
+        [OperationContract]
+        int SetAccount(CUENTAS cuenta);
+
+        [OperationContract]
+        Result UptAccount(string idAccount, string numCuenta);
+
+        [OperationContract]
+        Result DelAccount(string idAccount);
+
+        [OperationContract]
+        Result AddAmount(int idAccount, double valor);
+
+        [OperationContract]
+        Result RemoveAmount(int idAccount, double valor);
+
+        [OperationContract]
+        IEnumerable<SALDO> GetBalance(int idAccount);
+
     }
 
 
     // Utilice un contrato de datos, como se ilustra en el ejemplo siguiente, para agregar tipos compuestos a las operaciones de servicio.
     [DataContract]
-    public class CompositeType
+    public class Result
     {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
         [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
+        public int codigo { get; set; }
         [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
+        public string Mensaje { get; set; }
     }
 }
