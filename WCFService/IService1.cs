@@ -25,19 +25,28 @@ namespace WCFService
         int SetAccount(CUENTAS cuenta);
 
         [OperationContract]
+        int SetUsuario(USUARIOS cuenta);
+
+        [OperationContract]
         Result UptAccount(string idAccount, string numCuenta);
 
         [OperationContract]
         Result DelAccount(string idAccount);
 
         [OperationContract]
-        Result AddAmount(int idAccount, double valor);
+        Result AddAmount(string idAccount, double valor);
 
         [OperationContract]
-        Result RemoveAmount(int idAccount, double valor);
+        Result RemoveAmount(string idAccount, double valor);
 
         [OperationContract]
-        IEnumerable<SALDO> GetBalance(int idAccount);
+        IEnumerable<SALDO> GetBalance(string idAccount);
+
+        [OperationContract]
+        IEnumerable<USER> GetUserByUserAndPass(string user, string pass);
+
+        [OperationContract]
+        IEnumerable<USUARIOS> GetRolByIdUser(int idUser);
 
     }
 

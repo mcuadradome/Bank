@@ -8,32 +8,33 @@
         Title="Home" Height="450" Width="800">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="66" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
-            <Button x:Name="button" Content="Crear cuenta" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="91"/>
-            <Button x:Name="button1" Content="Borrar Cuentas" HorizontalAlignment="Left" Margin="129,10,0,0" VerticalAlignment="Top" Width="106"/>
-            <Button x:Name="button2" Content="Modificar cuentas" HorizontalAlignment="Left" Margin="266,10,0,0" VerticalAlignment="Top" Width="99"/>
-            <Button x:Name="button3" Content="Adicionar Dinero" HorizontalAlignment="Left" Margin="390,10,0,0" VerticalAlignment="Top" Width="105"/>
-            <Button x:Name="button4" Content="Retirar Dinero" HorizontalAlignment="Left" Margin="510,10,0,0" VerticalAlignment="Top" Width="94"/>
-            <Button x:Name="button5" Content="Obtener Saldos" HorizontalAlignment="Left" Margin="624,10,0,0" VerticalAlignment="Top" Width="107"/>
+            <Button x:Name="btnCrearCuenta" Content="Crear cuenta" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="91" Click="btnCrearCuenta_Click"/>
+            <Button x:Name="btnBorrarCuenta" Content="Borrar Cuentas" HorizontalAlignment="Left" Margin="129,10,0,0" VerticalAlignment="Top" Width="106" Click="btnBorrarCuenta_Click"/>
+            <Button x:Name="btnModCuenta" Content="Modificar cuentas" HorizontalAlignment="Left" Margin="266,10,0,0" VerticalAlignment="Top" Width="99" Click="btnModCuenta_Click"/>
+            <Button x:Name="btnAddMount" Content="Adicionar Dinero" HorizontalAlignment="Left" Margin="390,10,0,0" VerticalAlignment="Top" Width="105" Click="btnAddMount_Click"/>
+            <Button x:Name="btnRemMount" Content="Retirar Dinero" HorizontalAlignment="Left" Margin="510,10,0,0" VerticalAlignment="Top" Width="94" Click="btnRemMount_Click"/>
+            <Button x:Name="btnGetSaldo" Content="Obtener Saldos" HorizontalAlignment="Left" Margin="624,10,0,0" VerticalAlignment="Top" Width="107" Click="btnGetSaldo_Click"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="333" Margin="10,76,0,0" VerticalAlignment="Top" Width="772">
-            <Label x:Name="label" Content="Identificacion" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="83"/>
-            <Label x:Name="label1" Content="Nombre" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="83"/>
-            <Label x:Name="label1_Copy" Content="Apellido" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="83"/>
-            <Label x:Name="label1_Copy1" Content="Email" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="83"/>
-            <Label x:Name="label1_Copy2" Content="Telefono" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="83"/>
-            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="120,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="120,72,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="120,103,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" Margin="120,134,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <Label x:Name="label2" Content="Saldo" HorizontalAlignment="Left" Margin="281,10,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label3" Content="Nuevo valor" HorizontalAlignment="Left" Margin="281,36,0,0" VerticalAlignment="Top"/>
+        <Grid x:Name="gridForm" HorizontalAlignment="Left" Height="333" Margin="10,67,0,0" VerticalAlignment="Top" Width="772">
+            <Label x:Name="lblIdenti" Content="Identificacion" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="83"/>
+            <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="83"/>
+            <Label x:Name="lblApellido" Content="Apellido" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="83"/>
+            <Label x:Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" Width="83"/>
+            <Label x:Name="lblTel" Content="Telefono" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Width="83"/>
+            <TextBox x:Name="txtIdent" HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="121,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtApellido" HorizontalAlignment="Left" Height="23" Margin="120,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="120,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtTel" HorizontalAlignment="Left" Height="23" Margin="120,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="lblSaldo" Content="Saldo" HorizontalAlignment="Left" Margin="281,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblNuevoSaldo" Content="Nuevo valor" HorizontalAlignment="Left" Margin="281,36,0,0" VerticalAlignment="Top"/>
             <Button x:Name="button6" Content="Enviar" HorizontalAlignment="Left" Margin="78,209,0,0" VerticalAlignment="Top" Width="75" Click="button6_Click" RenderTransformOrigin="0.467,2.2"/>
-            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="100" Margin="281,72,0,0" VerticalAlignment="Top" Width="219"/>
-            <TextBox x:Name="textBox5" HorizontalAlignment="Left" Height="23" Margin="366,13,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="textBox6" HorizontalAlignment="Left" Height="23" Margin="366,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <Label x:Name="label4" Content="N. Cuenta&#x9;" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="textBox7" HorizontalAlignment="Left" Height="23" Margin="121,165,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtSaldo" HorizontalAlignment="Left" Height="23" Margin="366,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtNuevoSaldo" HorizontalAlignment="Left" Height="23" Margin="366,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="lblCuenta" Content="N. Cuenta&#x9;" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtNCuenta" HorizontalAlignment="Left" Height="23" Margin="121,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="lblCCuenta" Content="Nueva Cuenta&#x9;" HorizontalAlignment="Left" Margin="281,75,0,0" VerticalAlignment="Top" Width="85"/>
+            <TextBox x:Name="txtCCuenta" HorizontalAlignment="Left" Height="23" Margin="366,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         </Grid>
     </Grid>
 </Window>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:59946/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:59946/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:59946/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFService.Model" />
+      <xsd:import schemaLocation="http://localhost:59946/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WCFService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetRolbyId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolbyId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRolbyId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolbyIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAccountbyId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountbyId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAccountbyId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountbyIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetAccount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UptAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:UptAccount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UptAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UptAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DelAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelAccount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DelAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddAmount_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAmount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddAmount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAmountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveAmount_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAmount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveAmount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAmountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBalance" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserByUserAndPass_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByUserAndPass" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserByUserAndPass_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByUserAndPassResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRolByIdUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolByIdUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRolByIdUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolByIdUserResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetRolbyId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRolbyId" message="tns:IService1_GetRolbyId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetRolbyIdResponse" message="tns:IService1_GetRolbyId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountbyId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAccountbyId" message="tns:IService1_GetAccountbyId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAccountbyIdResponse" message="tns:IService1_GetAccountbyId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetAccount" message="tns:IService1_SetAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetAccountResponse" message="tns:IService1_SetAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetUsuario" message="tns:IService1_SetUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetUsuarioResponse" message="tns:IService1_SetUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UptAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UptAccount" message="tns:IService1_UptAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UptAccountResponse" message="tns:IService1_UptAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DelAccount" message="tns:IService1_DelAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DelAccountResponse" message="tns:IService1_DelAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAmount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddAmount" message="tns:IService1_AddAmount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddAmountResponse" message="tns:IService1_AddAmount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAmount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveAmount" message="tns:IService1_RemoveAmount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveAmountResponse" message="tns:IService1_RemoveAmount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetBalance" message="tns:IService1_GetBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetBalanceResponse" message="tns:IService1_GetBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUserAndPass">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserByUserAndPass" message="tns:IService1_GetUserByUserAndPass_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserByUserAndPassResponse" message="tns:IService1_GetUserByUserAndPass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRolByIdUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRolByIdUser" message="tns:IService1_GetRolByIdUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetRolByIdUserResponse" message="tns:IService1_GetRolByIdUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRolbyId">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetRolbyId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountbyId">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAccountbyId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAccount">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUsuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UptAccount">
+      <soap:operation soapAction="http://tempuri.org/IService1/UptAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelAccount">
+      <soap:operation soapAction="http://tempuri.org/IService1/DelAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAmount">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAmount">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoveAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUserAndPass">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserByUserAndPass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRolByIdUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetRolByIdUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:59946/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

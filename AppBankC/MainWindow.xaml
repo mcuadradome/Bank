@@ -9,8 +9,8 @@
     <Grid RenderTransformOrigin="0.533,0.508">
         <Label Content="Usuario" HorizontalAlignment="Left" Margin="209,156,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Password" HorizontalAlignment="Left" Margin="209,202,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtBoxUser" HorizontalAlignment="Left" Height="23" Margin="299,156,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
-        <Button x:Name="btnLogin" Content="Ingresar" HorizontalAlignment="Left" Margin="299,260,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtBoxUser" HorizontalAlignment="Left" Height="23" Margin="299,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <Button x:Name="btnLogin" Content="Ingresar" HorizontalAlignment="Left" Margin="299,260,0,0" VerticalAlignment="Top" Width="120" Click="btnLogin_Click"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="299,202,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
 
     </Grid>

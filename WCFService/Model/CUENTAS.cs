@@ -23,6 +23,7 @@ namespace WCFService.Model
         public int id { get; set; }
         public int id_user { get; set; }
         public string cuenta { get; set; }
+        public Nullable<bool> state_account { get; set; }
     
         public virtual USUARIOS USUARIOS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

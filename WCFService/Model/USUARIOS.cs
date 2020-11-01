@@ -27,6 +27,7 @@ namespace WCFService.Model
         public string email { get; set; }
         public string telefono { get; set; }
         public int id_rol { get; set; }
+        public string identificacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUENTAS> CUENTAS { get; set; }
