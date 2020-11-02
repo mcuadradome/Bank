@@ -56,6 +56,21 @@ namespace AppBankC.View
                 btnCrearCuenta.Visibility = Visibility.Collapsed;
                 btnModCuenta.Visibility = Visibility.Collapsed;
 
+                txtNombre.Visibility = Visibility.Collapsed;
+                lblNombre.Visibility = Visibility.Collapsed;
+
+                txtApellido.Visibility = Visibility.Collapsed;
+                lblApellido.Visibility = Visibility.Collapsed;
+
+                txtEmail.Visibility = Visibility.Collapsed;
+                lblEmail.Visibility = Visibility.Collapsed;
+
+                txtTel.Visibility = Visibility.Collapsed;
+                lblTel.Visibility = Visibility.Collapsed;
+
+                txtCCuenta.Visibility = Visibility.Collapsed;
+                lblCCuenta.Visibility = Visibility.Collapsed;
+
             }
             else if (id.Equals(3))
             {
@@ -74,19 +89,8 @@ namespace AppBankC.View
             txtNuevoSaldo.Visibility = Visibility.Collapsed;
             lblNuevoSaldo.Visibility = Visibility.Collapsed;
 
-            dtgCuentas.Visibility = Visibility.Collapsed;
-
-            //txtNombre.Visibility = Visibility.Collapsed;
-            //lblNombre.Visibility = Visibility.Collapsed;
-
-            //txtApellido.Visibility = Visibility.Collapsed;
-            //lblApellido.Visibility = Visibility.Collapsed;
-
-            //txtEmail.Visibility = Visibility.Collapsed;
-            //lblEmail.Visibility = Visibility.Collapsed;
-
-            //txtTel.Visibility = Visibility.Collapsed;
-            //lblTel.Visibility = Visibility.Collapsed;
+            //dtgCuentas.Visibility = Visibility.Collapsed;
+          
         }
 
         private void ShowHideBorrar()
@@ -111,7 +115,7 @@ namespace AppBankC.View
             ShowHideCrear();
             ShowHideBorrar();
 
-            dtgCuentas.Visibility = Visibility.Visible;
+            //dtgCuentas.Visibility = Visibility.Visible;
 
         }
 
@@ -129,7 +133,7 @@ namespace AppBankC.View
             ShowHideCrear();
             ShowHideBorrar();
 
-            dtgCuentas.Visibility = Visibility.Visible;
+            //dtgCuentas.Visibility = Visibility.Visible;
         }
 
         private void ShowHideRetirar()
@@ -150,47 +154,66 @@ namespace AppBankC.View
 
         private void btnCrearCuenta_Click(object sender, RoutedEventArgs e)
         {
-            ShowHideCrear();
+            //ShowHideCrear();
 
-            USUARIOS usu = new USUARIOS();
-
-            usu.nombre = Common.Encrypt(txtNombre.Text);
-            usu.apellido = Common.Encrypt(txtApellido.Text);
-            usu.email = txtEmail.Text.Equals("") ? " " : txtEmail.Text;
-            usu.telefono = txtTel.Text;
-            usu.id_rol = 4;
-            usu.identificacion = txtIdent.Text;
-
-           int res = homeController.Insertuser(usu);
-            
-            if(res != 0)
+            if (ValidaCampos())
             {
-                CUENTAS cuenta = new CUENTAS();
+                USUARIOS usu = new USUARIOS();
 
-                cuenta.id_user = res;
-                cuenta.cuenta = txtNCuenta.Text;
-                cuenta.state_account = true;
+                usu.nombre = Common.Encrypt(txtNombre.Text);
+                usu.apellido = Common.Encrypt(txtApellido.Text);
+                usu.email = txtEmail.Text.Equals("") ? " " : txtEmail.Text;
+                usu.telefono = txtTel.Text;
+                usu.id_rol = 4;
+                usu.identificacion = txtIdent.Text;
 
-               int result = homeController.InsertAccount(cuenta);
-                if(result != 0)
+                int res = homeController.Insertuser(usu);
+
+                if (res != 0)
                 {
-                    MessageBox.Show("Cuenta creada con exito");
+                    CUENTAS cuenta = new CUENTAS();
+
+                    cuenta.id_user = res;
+                    cuenta.cuenta = txtNCuenta.Text;
+                    cuenta.state_account = true;
+
+                    int result = homeController.InsertAccount(cuenta);
+                    if (result != 0)
+                    {
+                        MessageBox.Show("Cuenta creada con exito");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al crear cuenta");
+                    }
+
                 }
                 else
                 {
                     MessageBox.Show("Error al crear cuenta");
                 }
-
             }
             else
             {
-                MessageBox.Show("Error al crear cuenta");
+                MessageBox.Show("Hay campos vacios requeridos");
+            }
+        }
+
+        private bool ValidaCampos()
+        {
+            if (txtNombre.Text.Equals("") && txtApellido.Text.Equals("") && 
+                txtIdent.Text.Equals("") && txtTel.Text.Equals(""))
+            {
+                return false;
+            }
+            else{
+                return true;
             }
         }
 
         private void btnBorrarCuenta_Click(object sender, RoutedEventArgs e)
         {
-            ShowHideBorrar();
+            //ShowHideBorrar();
             if (!txtNCuenta.Text.Equals(""))
             {
                 var res = homeController.DelAccount(txtNCuenta.Text);
@@ -213,7 +236,7 @@ namespace AppBankC.View
 
         private void btnModCuenta_Click(object sender, RoutedEventArgs e)
         {
-            ShowHideModificar();
+            //ShowHideModificar();
 
             if (!txtNCuenta.Text.Equals("") && !txtCCuenta.Text.Equals(""))
             {
@@ -236,7 +259,7 @@ namespace AppBankC.View
 
         private void btnAddMount_Click(object sender, RoutedEventArgs e)
         {
-            ShowHideAdicionar();
+            //ShowHideAdicionar();
 
             if (!txtNCuenta.Text.Equals("") && !txtNuevoSaldo.Text.Equals(""))
             {
@@ -245,6 +268,7 @@ namespace AppBankC.View
 
                 if (res)
                 {
+                    GetBalance();
                     MessageBox.Show("Valor Actualizada");
                 }
                 else
@@ -260,7 +284,7 @@ namespace AppBankC.View
 
         private void btnRemMount_Click(object sender, RoutedEventArgs e)
         {
-            ShowHideRetirar();
+            //ShowHideRetirar();
 
             if (!txtNCuenta.Text.Equals("") && !txtNuevoSaldo.Text.Equals(""))
             {
@@ -269,6 +293,7 @@ namespace AppBankC.View
 
                 if (res)
                 {
+                    GetBalance();
                     MessageBox.Show("Valor Actualizada");
                 }
                 else
@@ -284,18 +309,23 @@ namespace AppBankC.View
 
         private void btnGetSaldo_Click(object sender, RoutedEventArgs e)
         {
-            ShowHideObtener();
+            // ShowHideObtener();
 
+            GetBalance();
+        }
+
+        public void GetBalance()
+        {
             if (!txtNCuenta.Text.Equals(""))
             {
-               
+
                 var res = homeController.GetBalance(txtNCuenta.Text);
 
                 if (res != null)
                 {
                     txtSaldo.Text = res.FirstOrDefault().saldo1.ToString();
                     txtNuevoSaldo.Text = res.FirstOrDefault().nuevo_saldo.ToString();
-                   
+
                 }
                 else
                 {

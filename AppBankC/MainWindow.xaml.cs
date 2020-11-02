@@ -32,14 +32,20 @@ namespace AppBankC
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            string user = Common.Encrypt(txtBoxUser.Text);
-            string pass = Common.Encrypt(passwordBox.Password);
+            string user = Common.Encrypt(txtBoxUser.Text).ToLower().Trim();
+            string pass = Common.Encrypt(passwordBox.Password).ToLower().Trim();
 
             var res = controller.GetUserLogin(user, pass);
 
             if (res != null)
             {
+                string passDes = Common.DesEncrypt(res.FirstOrDefault().password);
+                string userDes = Common.DesEncrypt(res.FirstOrDefault().user_name);
+
                 userResponse = res.FirstOrDefault();
+
+                userResponse.user_name = userDes;
+                userResponse.password = passDes;
 
                 var newForm = new Home(); //create your new form.
                 newForm.Show(); //show the new form.

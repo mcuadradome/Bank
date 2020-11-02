@@ -40,6 +40,9 @@ namespace WCFService
         Result RemoveAmount(string idAccount, double valor);
 
         [OperationContract]
+        IEnumerable<CUENTAS> GetSateAccountbyId(string idAccount);
+
+        [OperationContract]
         IEnumerable<SALDO> GetBalance(string idAccount);
 
         [OperationContract]

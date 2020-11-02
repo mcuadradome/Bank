@@ -28,8 +28,8 @@
             <TextBox x:Name="txtTel" HorizontalAlignment="Left" Height="23" Margin="120,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
             <Label x:Name="lblSaldo" Content="Saldo" HorizontalAlignment="Left" Margin="281,10,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lblNuevoSaldo" Content="Nuevo valor" HorizontalAlignment="Left" Margin="281,36,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="button6" Content="Enviar" HorizontalAlignment="Left" Margin="78,209,0,0" VerticalAlignment="Top" Width="75" Click="button6_Click" RenderTransformOrigin="0.467,2.2"/>
-            <TextBox x:Name="txtSaldo" HorizontalAlignment="Left" Height="23" Margin="366,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Button x:Name="btnSend" Content="Enviar" HorizontalAlignment="Left" Margin="78,209,0,0" VerticalAlignment="Top" Width="75" Click="button6_Click" RenderTransformOrigin="0.467,2.2" Visibility="Collapsed"/>
+            <TextBox x:Name="txtSaldo" HorizontalAlignment="Left" Height="23" Margin="366,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
             <TextBox x:Name="txtNuevoSaldo" HorizontalAlignment="Left" Height="23" Margin="366,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
             <Label x:Name="lblCuenta" Content="N. Cuenta&#x9;" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="txtNCuenta" HorizontalAlignment="Left" Height="23" Margin="121,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>

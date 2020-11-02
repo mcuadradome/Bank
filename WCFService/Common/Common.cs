@@ -89,7 +89,7 @@ namespace WCFService.Common
                 msgEncrypt = msgEncrypt + " ";
             }
 
-            return msgEncrypt;
+            return msgEncrypt.Trim();
 
         }
 
@@ -121,7 +121,7 @@ namespace WCFService.Common
                     int posLet = Common.GetPositionLetter(let, false);
                     int posReplace = posLet + mod;
 
-                    if (posReplace > Common.abc.Length)
+                    if (posReplace >= Common.abc.Length)
                     {
                         int cont = 0;
                         for (int i = Common.abc.Length; i < posReplace; i++)
@@ -143,7 +143,7 @@ namespace WCFService.Common
                 msgEncrypt = msgEncrypt + " ";
             }
 
-            return msgEncrypt;
+            return msgEncrypt.Trim();
 
         }
     }
