@@ -18,7 +18,7 @@ namespace AppBankC.Controller
             model = new LoginModel();
         }
 
-        public USER[] GetUserLogin(string user, string password)
+        public USUARIO[] GetUserLogin(string user, string password)
         {
             try
             {

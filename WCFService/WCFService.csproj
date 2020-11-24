@@ -121,16 +121,10 @@
     <Compile Include="Model\SALDO.cs">
       <DependentUpon>BankModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sp_helpdiagrams_Result.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\sysdiagrams.cs">
       <DependentUpon>BankModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\USER.cs">
+    <Compile Include="Model\USUARIO.cs">
       <DependentUpon>BankModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\USUARIOS.cs">

@@ -175,7 +175,7 @@ namespace AppBankC.View
 
                     cuenta.id_user = res;
                     cuenta.cuenta = txtNCuenta.Text;
-                    cuenta.state_account = true;
+                    cuenta.state_ac = true;
 
                     int result = homeController.InsertAccount(cuenta);
                     if (result != 0)

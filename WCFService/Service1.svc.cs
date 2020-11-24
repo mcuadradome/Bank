@@ -25,10 +25,10 @@ namespace WCFService
                     var result = GetAccountbyId(idAccount);
                     int id = result.FirstOrDefault().id;
 
-                    if (result.FirstOrDefault().state_account.Value)
+                    if (result.FirstOrDefault().state_ac)
                     {
                         var saldo = GetBalance(idAccount).FirstOrDefault();
-                        double newValor = saldo.saldo1.GetValueOrDefault()+valor;
+                        double newValor = Double.Parse(saldo.saldo1.ToString()) + valor;
 
                         codeResult = ctx.Database.ExecuteSqlCommand("UPDATE [SALDO] SET [saldo] = {0}, [nuevo_saldo] = {2} WHERE [id_cuenta] = {1}", newValor, id, valor);
                         return new Result { codigo = codeResult, Mensaje = "OK" };
@@ -53,7 +53,7 @@ namespace WCFService
             {
                 using (var context = new Model.BANKEntities())
                 {               
-                    return context.CUENTAS.OrderBy(p => p.id).ToList().Where(p => p.cuenta == idAccount).Select(p => new CUENTAS() { id = p.id, state_account=p.state_account });
+                    return context.CUENTAS.OrderBy(p => p.id).ToList().Where(p => p.cuenta == idAccount).Select(p => new CUENTAS() { id = p.id, state_ac=p.state_ac });
                 }
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace WCFService
                 using (var context = new Model.BANKEntities())
                 {
                     var cuenta = new string[] { id };
-                    return context.CUENTAS.OrderBy(p => p.id).ToList().Where(p => p.cuenta == id).Select(p => new CUENTAS() { id = p.id, id_user = p.id_user, cuenta = p.cuenta, state_account=p.state_account });
+                    return context.CUENTAS.OrderBy(p => p.id).ToList().Where(p => p.cuenta == id).Select(p => new CUENTAS() { id = p.id, id_user = p.id_user, cuenta = p.cuenta, state_ac=p.state_ac });
                 }
             }
             catch (Exception ex)
@@ -124,10 +124,10 @@ namespace WCFService
                     var result = GetAccountbyId(idAccount);
                     int id = result.FirstOrDefault().id;
 
-                    if (result.FirstOrDefault().state_account.Value)
+                    if (result.FirstOrDefault().state_ac)
                     {
                         var saldo = GetBalance(idAccount).FirstOrDefault();
-                        double newValor = saldo.saldo1.GetValueOrDefault() - valor;
+                        double newValor =Double.Parse(saldo.saldo1.ToString()) - valor;
 
                         codeResult = ctx.Database.ExecuteSqlCommand("UPDATE [SALDO] SET [nuevo_saldo] = {2}, [saldo] = {0} WHERE [id_cuenta] = {1}", newValor, id, valor);
                         return new Result { codigo = codeResult, Mensaje = "OK" };
@@ -155,7 +155,7 @@ namespace WCFService
                     {
                         id_user = cuenta.id_user,
                         cuenta = cuenta.cuenta,
-                        state_account= cuenta.state_account
+                        state_ac= cuenta.state_ac
                     };
 
                     context.CUENTAS.Add(newControl);
@@ -209,7 +209,7 @@ namespace WCFService
                 {
                     var result = GetAccountbyId(idAccount);
                     int id = result.FirstOrDefault().id;
-                    var state = result.FirstOrDefault().state_account.GetValueOrDefault();
+                    var state = result.FirstOrDefault().state_ac;
                     if (state)
                     {
                         ctx.CUENTAS.Where(s => s.cuenta == idAccount).ToList().ForEach(s => {
@@ -250,7 +250,7 @@ namespace WCFService
             }
         }
 
-        IEnumerable<USER> IService1.GetUserByUserAndPass(string user, string pass)
+        IEnumerable<USUARIO> IService1.GetUserByUserAndPass(string user, string pass)
         {
             try
             {
@@ -258,7 +258,7 @@ namespace WCFService
                 {
                     string passDes = Common.Common.DesEncrypt(pass);
                     string userDes = Common.Common.DesEncrypt(user);
-                    return context.USER.OrderBy(p => p.id).ToList().Where(p => p.user_name.Equals(userDes) && p.password.Equals(passDes)).Select(p => new USER() { id = p.id, id_user = p.id_user, user_name= Common.Common.Encrypt(p.user_name), password= Common.Common.Encrypt(p.password)});
+                    return context.USUARIO.OrderBy(p => p.id).ToList().Where(p => p.user_name.Equals(userDes) && p.password.Equals(passDes)).Select(p => new USUARIO() { id = p.id, id_user = p.id_user, user_name= Common.Common.Encrypt(p.user_name), password= Common.Common.Encrypt(p.password)});
                 }
             }
             catch (Exception)

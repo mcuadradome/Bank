@@ -12,7 +12,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_user" Type="int" Nullable="false" />
           <Property Name="cuenta" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="state_account" Type="bit" />
+          <Property Name="state_ac" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ROL">
           <Key>
@@ -27,8 +27,8 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_cuenta" Type="int" Nullable="false" />
-          <Property Name="saldo" Type="int" />
-          <Property Name="nuevo_saldo" Type="int" />
+          <Property Name="saldo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="nuevo_saldo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -40,7 +40,7 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="USER">
+        <EntityType Name="USUARIO">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -62,9 +62,7 @@
           <Property Name="identificacion" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_CUENTAS_USUARIOS">
-          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
           <End Role="CUENTAS" Type="Self.CUENTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIOS">
@@ -91,12 +89,12 @@
           <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIOS">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="USER">
+            <Dependent Role="USUARIO">
               <PropertyRef Name="id_user" />
             </Dependent>
           </ReferentialConstraint>
@@ -115,43 +113,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="BANKModelStoreContainer">
           <EntitySet Name="CUENTAS" EntityType="Self.CUENTAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SALDO" EntityType="Self.SALDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CUENTAS_USUARIOS" Association="Self.FK_CUENTAS_USUARIOS">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
@@ -163,7 +130,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_USER_USUARIOS" Association="Self.FK_USER_USUARIOS">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
-            <End Role="USER" EntitySet="USER" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
           <AssociationSet Name="FK_USUARIOS_ROL" Association="Self.FK_USUARIOS_ROL">
             <End Role="ROL" EntitySet="ROL" />
@@ -182,7 +149,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_user" Type="Int32" Nullable="false" />
           <Property Name="cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="state_account" Type="Boolean" />
+          <Property Name="state_ac" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="USUARIOS" Relationship="Self.FK_CUENTAS_USUARIOS" FromRole="CUENTAS" ToRole="USUARIOS" />
           <NavigationProperty Name="SALDO" Relationship="Self.FK_SALDO_CUENTAS" FromRole="CUENTAS" ToRole="SALDO" />
         </EntityType>
@@ -200,8 +167,8 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_cuenta" Type="Int32" Nullable="false" />
-          <Property Name="saldo1" Type="Int32" />
-          <Property Name="nuevo_saldo" Type="Int32" />
+          <Property Name="saldo1" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="nuevo_saldo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <NavigationProperty Name="CUENTAS" Relationship="Self.FK_SALDO_CUENTAS" FromRole="SALDO" ToRole="CUENTAS" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -214,7 +181,7 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="USER">
+        <EntityType Name="USUARIO">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -222,7 +189,7 @@
           <Property Name="id_user" Type="Int32" Nullable="false" />
           <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USER_USUARIOS" FromRole="USER" ToRole="USUARIOS" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USER_USUARIOS" FromRole="USUARIO" ToRole="USUARIOS" />
         </EntityType>
         <EntityType Name="USUARIOS">
           <Key>
@@ -237,12 +204,10 @@
           <Property Name="identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CUENTAS" Relationship="Self.FK_CUENTAS_USUARIOS" FromRole="USUARIOS" ToRole="CUENTAS" />
           <NavigationProperty Name="ROL" Relationship="Self.FK_USUARIOS_ROL" FromRole="USUARIOS" ToRole="ROL" />
-          <NavigationProperty Name="USER" Relationship="Self.FK_USER_USUARIOS" FromRole="USUARIOS" ToRole="USER" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USER_USUARIOS" FromRole="USUARIOS" ToRole="USUARIO" />
         </EntityType>
         <Association Name="FK_CUENTAS_USUARIOS">
-          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
           <End Role="CUENTAS" Type="Self.CUENTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIOS">
@@ -283,12 +248,12 @@
           <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIOS">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="USER">
+            <Dependent Role="USUARIO">
               <PropertyRef Name="id_user" />
             </Dependent>
           </ReferentialConstraint>
@@ -298,7 +263,7 @@
           <EntitySet Name="ROL" EntityType="Self.ROL" />
           <EntitySet Name="SALDO" EntityType="Self.SALDO" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="USER" EntityType="Self.USER" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
           <AssociationSet Name="FK_CUENTAS_USUARIOS" Association="Self.FK_CUENTAS_USUARIOS">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
@@ -314,50 +279,9 @@
           </AssociationSet>
           <AssociationSet Name="FK_USER_USUARIOS" Association="Self.FK_USER_USUARIOS">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
-            <End Role="USER" EntitySet="USER" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BANKModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BANKModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -370,7 +294,7 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_user" ColumnName="id_user" />
                 <ScalarProperty Name="cuenta" ColumnName="cuenta" />
-                <ScalarProperty Name="state_account" ColumnName="state_account" />
+                <ScalarProperty Name="state_ac" ColumnName="state_ac" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -403,9 +327,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="USER">
-            <EntityTypeMapping TypeName="BANKModel.USER">
-              <MappingFragment StoreEntitySet="USER">
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="BANKModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_user" ColumnName="id_user" />
                 <ScalarProperty Name="user_name" ColumnName="user_name" />
@@ -426,30 +350,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BANKModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BANKModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BANKModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BANKModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BANKModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BANKModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BANKModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BANKModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BANKModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -46,7 +46,7 @@ namespace WCFService
         IEnumerable<SALDO> GetBalance(string idAccount);
 
         [OperationContract]
-        IEnumerable<USER> GetUserByUserAndPass(string user, string pass);
+        IEnumerable<USUARIO> GetUserByUserAndPass(string user, string pass);
 
         [OperationContract]
         IEnumerable<USUARIOS> GetRolByIdUser(int idUser);

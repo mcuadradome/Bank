@@ -117,6 +117,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetSateAccountbyId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idAccount" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSateAccountbyIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFService.Model" minOccurs="0" name="GetSateAccountbyIdResult" nillable="true" type="q9:ArrayOfCUENTAS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetBalance">
     <xs:complexType>
       <xs:sequence>
@@ -127,7 +141,7 @@
   <xs:element name="GetBalanceResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFService.Model" minOccurs="0" name="GetBalanceResult" nillable="true" type="q9:ArrayOfSALDO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFService.Model" minOccurs="0" name="GetBalanceResult" nillable="true" type="q10:ArrayOfSALDO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -142,7 +156,7 @@
   <xs:element name="GetUserByUserAndPassResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFService.Model" minOccurs="0" name="GetUserByUserAndPassResult" nillable="true" type="q10:ArrayOfUSER" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFService.Model" minOccurs="0" name="GetUserByUserAndPassResult" nillable="true" type="q11:ArrayOfUSUARIO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -156,7 +170,7 @@
   <xs:element name="GetRolByIdUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFService.Model" minOccurs="0" name="GetRolByIdUserResult" nillable="true" type="q11:ArrayOfUSUARIOS" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WCFService.Model" minOccurs="0" name="GetRolByIdUserResult" nillable="true" type="q12:ArrayOfUSUARIOS" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

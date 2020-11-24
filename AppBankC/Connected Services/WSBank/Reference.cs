@@ -106,7 +106,7 @@ namespace AppBankC.WSBank {
         private AppBankC.WSBank.ROL ROLField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AppBankC.WSBank.USER[] USERField;
+        private AppBankC.WSBank.USUARIO[] USUARIOField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string apellidoField;
@@ -166,14 +166,14 @@ namespace AppBankC.WSBank {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public AppBankC.WSBank.USER[] USER {
+        public AppBankC.WSBank.USUARIO[] USUARIO {
             get {
-                return this.USERField;
+                return this.USUARIOField;
             }
             set {
-                if ((object.ReferenceEquals(this.USERField, value) != true)) {
-                    this.USERField = value;
-                    this.RaisePropertyChanged("USER");
+                if ((object.ReferenceEquals(this.USUARIOField, value) != true)) {
+                    this.USUARIOField = value;
+                    this.RaisePropertyChanged("USUARIO");
                 }
             }
         }
@@ -304,7 +304,7 @@ namespace AppBankC.WSBank {
         private int id_userField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> state_accountField;
+        private bool state_acField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -382,14 +382,14 @@ namespace AppBankC.WSBank {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> state_account {
+        public bool state_ac {
             get {
-                return this.state_accountField;
+                return this.state_acField;
             }
             set {
-                if ((this.state_accountField.Equals(value) != true)) {
-                    this.state_accountField = value;
-                    this.RaisePropertyChanged("state_account");
+                if ((this.state_acField.Equals(value) != true)) {
+                    this.state_acField = value;
+                    this.RaisePropertyChanged("state_ac");
                 }
             }
         }
@@ -406,9 +406,9 @@ namespace AppBankC.WSBank {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="USER", Namespace="http://schemas.datacontract.org/2004/07/WCFService.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="USUARIO", Namespace="http://schemas.datacontract.org/2004/07/WCFService.Model")]
     [System.SerializableAttribute()]
-    public partial class USER : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class USUARIO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -532,10 +532,10 @@ namespace AppBankC.WSBank {
         private int id_cuentaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> nuevo_saldoField;
+        private decimal nuevo_saldoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> saldo1Field;
+        private decimal saldo1Field;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -587,7 +587,7 @@ namespace AppBankC.WSBank {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> nuevo_saldo {
+        public decimal nuevo_saldo {
             get {
                 return this.nuevo_saldoField;
             }
@@ -600,7 +600,7 @@ namespace AppBankC.WSBank {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> saldo1 {
+        public decimal saldo1 {
             get {
                 return this.saldo1Field;
             }
@@ -751,6 +751,14 @@ namespace AppBankC.WSBank {
         
         AppBankC.WSBank.Result EndRemoveAmount(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSateAccountbyId", ReplyAction="http://tempuri.org/IService1/GetSateAccountbyIdResponse")]
+        AppBankC.WSBank.CUENTAS[] GetSateAccountbyId(string idAccount);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetSateAccountbyId", ReplyAction="http://tempuri.org/IService1/GetSateAccountbyIdResponse")]
+        System.IAsyncResult BeginGetSateAccountbyId(string idAccount, System.AsyncCallback callback, object asyncState);
+        
+        AppBankC.WSBank.CUENTAS[] EndGetSateAccountbyId(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBalance", ReplyAction="http://tempuri.org/IService1/GetBalanceResponse")]
         AppBankC.WSBank.SALDO[] GetBalance(string idAccount);
         
@@ -760,12 +768,12 @@ namespace AppBankC.WSBank {
         AppBankC.WSBank.SALDO[] EndGetBalance(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserByUserAndPass", ReplyAction="http://tempuri.org/IService1/GetUserByUserAndPassResponse")]
-        AppBankC.WSBank.USER[] GetUserByUserAndPass(string user, string pass);
+        AppBankC.WSBank.USUARIO[] GetUserByUserAndPass(string user, string pass);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserByUserAndPass", ReplyAction="http://tempuri.org/IService1/GetUserByUserAndPassResponse")]
         System.IAsyncResult BeginGetUserByUserAndPass(string user, string pass, System.AsyncCallback callback, object asyncState);
         
-        AppBankC.WSBank.USER[] EndGetUserByUserAndPass(System.IAsyncResult result);
+        AppBankC.WSBank.USUARIO[] EndGetUserByUserAndPass(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRolByIdUser", ReplyAction="http://tempuri.org/IService1/GetRolByIdUserResponse")]
         AppBankC.WSBank.USUARIOS[] GetRolByIdUser(int idUser);
@@ -934,6 +942,25 @@ namespace AppBankC.WSBank {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetSateAccountbyIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetSateAccountbyIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public AppBankC.WSBank.CUENTAS[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((AppBankC.WSBank.CUENTAS[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GetBalanceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -962,10 +989,10 @@ namespace AppBankC.WSBank {
             this.results = results;
         }
         
-        public AppBankC.WSBank.USER[] Result {
+        public AppBankC.WSBank.USUARIO[] Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((AppBankC.WSBank.USER[])(this.results[0]));
+                return ((AppBankC.WSBank.USUARIO[])(this.results[0]));
             }
         }
     }
@@ -1041,6 +1068,12 @@ namespace AppBankC.WSBank {
         
         private System.Threading.SendOrPostCallback onRemoveAmountCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetSateAccountbyIdDelegate;
+        
+        private EndOperationDelegate onEndGetSateAccountbyIdDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetSateAccountbyIdCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetBalanceDelegate;
         
         private EndOperationDelegate onEndGetBalanceDelegate;
@@ -1093,6 +1126,8 @@ namespace AppBankC.WSBank {
         public event System.EventHandler<AddAmountCompletedEventArgs> AddAmountCompleted;
         
         public event System.EventHandler<RemoveAmountCompletedEventArgs> RemoveAmountCompleted;
+        
+        public event System.EventHandler<GetSateAccountbyIdCompletedEventArgs> GetSateAccountbyIdCompleted;
         
         public event System.EventHandler<GetBalanceCompletedEventArgs> GetBalanceCompleted;
         
@@ -1506,6 +1541,56 @@ namespace AppBankC.WSBank {
                         valor}, this.onEndRemoveAmountDelegate, this.onRemoveAmountCompletedDelegate, userState);
         }
         
+        public AppBankC.WSBank.CUENTAS[] GetSateAccountbyId(string idAccount) {
+            return base.Channel.GetSateAccountbyId(idAccount);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetSateAccountbyId(string idAccount, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetSateAccountbyId(idAccount, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public AppBankC.WSBank.CUENTAS[] EndGetSateAccountbyId(System.IAsyncResult result) {
+            return base.Channel.EndGetSateAccountbyId(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetSateAccountbyId(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string idAccount = ((string)(inValues[0]));
+            return this.BeginGetSateAccountbyId(idAccount, callback, asyncState);
+        }
+        
+        private object[] OnEndGetSateAccountbyId(System.IAsyncResult result) {
+            AppBankC.WSBank.CUENTAS[] retVal = this.EndGetSateAccountbyId(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetSateAccountbyIdCompleted(object state) {
+            if ((this.GetSateAccountbyIdCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetSateAccountbyIdCompleted(this, new GetSateAccountbyIdCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetSateAccountbyIdAsync(string idAccount) {
+            this.GetSateAccountbyIdAsync(idAccount, null);
+        }
+        
+        public void GetSateAccountbyIdAsync(string idAccount, object userState) {
+            if ((this.onBeginGetSateAccountbyIdDelegate == null)) {
+                this.onBeginGetSateAccountbyIdDelegate = new BeginOperationDelegate(this.OnBeginGetSateAccountbyId);
+            }
+            if ((this.onEndGetSateAccountbyIdDelegate == null)) {
+                this.onEndGetSateAccountbyIdDelegate = new EndOperationDelegate(this.OnEndGetSateAccountbyId);
+            }
+            if ((this.onGetSateAccountbyIdCompletedDelegate == null)) {
+                this.onGetSateAccountbyIdCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSateAccountbyIdCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetSateAccountbyIdDelegate, new object[] {
+                        idAccount}, this.onEndGetSateAccountbyIdDelegate, this.onGetSateAccountbyIdCompletedDelegate, userState);
+        }
+        
         public AppBankC.WSBank.SALDO[] GetBalance(string idAccount) {
             return base.Channel.GetBalance(idAccount);
         }
@@ -1556,7 +1641,7 @@ namespace AppBankC.WSBank {
                         idAccount}, this.onEndGetBalanceDelegate, this.onGetBalanceCompletedDelegate, userState);
         }
         
-        public AppBankC.WSBank.USER[] GetUserByUserAndPass(string user, string pass) {
+        public AppBankC.WSBank.USUARIO[] GetUserByUserAndPass(string user, string pass) {
             return base.Channel.GetUserByUserAndPass(user, pass);
         }
         
@@ -1566,7 +1651,7 @@ namespace AppBankC.WSBank {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public AppBankC.WSBank.USER[] EndGetUserByUserAndPass(System.IAsyncResult result) {
+        public AppBankC.WSBank.USUARIO[] EndGetUserByUserAndPass(System.IAsyncResult result) {
             return base.Channel.EndGetUserByUserAndPass(result);
         }
         
@@ -1577,7 +1662,7 @@ namespace AppBankC.WSBank {
         }
         
         private object[] OnEndGetUserByUserAndPass(System.IAsyncResult result) {
-            AppBankC.WSBank.USER[] retVal = this.EndGetUserByUserAndPass(result);
+            AppBankC.WSBank.USUARIO[] retVal = this.EndGetUserByUserAndPass(result);
             return new object[] {
                     retVal};
         }

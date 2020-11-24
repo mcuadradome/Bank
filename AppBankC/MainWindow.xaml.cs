@@ -23,7 +23,7 @@ namespace AppBankC
     public partial class MainWindow : Window
     {
         LoginController controller;
-        public static USER userResponse;
+        public static USUARIO userResponse;
         public MainWindow()
         {
             InitializeComponent();

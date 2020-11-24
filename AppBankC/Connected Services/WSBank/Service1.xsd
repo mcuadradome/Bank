@@ -24,7 +24,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="CUENTAS" nillable="true" type="tns:ArrayOfCUENTAS" />
       <xs:element minOccurs="0" name="ROL" nillable="true" type="tns:ROL" />
-      <xs:element minOccurs="0" name="USER" nillable="true" type="tns:ArrayOfUSER" />
+      <xs:element minOccurs="0" name="USUARIO" nillable="true" type="tns:ArrayOfUSUARIO" />
       <xs:element minOccurs="0" name="apellido" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="id" type="xs:int" />
@@ -48,7 +48,7 @@
       <xs:element minOccurs="0" name="cuenta" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="id_user" type="xs:int" />
-      <xs:element minOccurs="0" name="state_account" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="state_ac" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CUENTAS" nillable="true" type="tns:CUENTAS" />
@@ -63,18 +63,18 @@
       <xs:element minOccurs="0" name="CUENTAS" nillable="true" type="tns:CUENTAS" />
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="id_cuenta" type="xs:int" />
-      <xs:element minOccurs="0" name="nuevo_saldo" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="saldo1" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="nuevo_saldo" type="xs:decimal" />
+      <xs:element minOccurs="0" name="saldo1" type="xs:decimal" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SALDO" nillable="true" type="tns:SALDO" />
-  <xs:complexType name="ArrayOfUSER">
+  <xs:complexType name="ArrayOfUSUARIO">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="USER" nillable="true" type="tns:USER" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="USUARIO" nillable="true" type="tns:USUARIO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfUSER" nillable="true" type="tns:ArrayOfUSER" />
-  <xs:complexType name="USER">
+  <xs:element name="ArrayOfUSUARIO" nillable="true" type="tns:ArrayOfUSUARIO" />
+  <xs:complexType name="USUARIO">
     <xs:sequence>
       <xs:element minOccurs="0" name="USUARIOS" nillable="true" type="tns:USUARIOS" />
       <xs:element minOccurs="0" name="id" type="xs:int" />
@@ -83,5 +83,5 @@
       <xs:element minOccurs="0" name="user_name" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="USER" nillable="true" type="tns:USER" />
+  <xs:element name="USUARIO" nillable="true" type="tns:USUARIO" />
 </xs:schema>

@@ -16,8 +16,8 @@ namespace WCFService.Model
     {
         public int id { get; set; }
         public int id_cuenta { get; set; }
-        public Nullable<int> saldo1 { get; set; }
-        public Nullable<int> nuevo_saldo { get; set; }
+        public decimal saldo1 { get; set; }
+        public decimal nuevo_saldo { get; set; }
     
         public virtual CUENTAS CUENTAS { get; set; }
     }

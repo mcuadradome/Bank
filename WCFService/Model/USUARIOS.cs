@@ -18,7 +18,7 @@ namespace WCFService.Model
         public USUARIOS()
         {
             this.CUENTAS = new HashSet<CUENTAS>();
-            this.USER = new HashSet<USER>();
+            this.USUARIO = new HashSet<USUARIO>();
         }
     
         public int id { get; set; }
@@ -33,6 +33,6 @@ namespace WCFService.Model
         public virtual ICollection<CUENTAS> CUENTAS { get; set; }
         public virtual ROL ROL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USER> USER { get; set; }
+        public virtual ICollection<USUARIO> USUARIO { get; set; }
     }
 }

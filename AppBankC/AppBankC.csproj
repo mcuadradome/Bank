@@ -118,7 +118,7 @@
     <None Include="Connected Services\WSBank\AppBankC.WSBank.SALDO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\WSBank\AppBankC.WSBank.USER.datasource">
+    <None Include="Connected Services\WSBank\AppBankC.WSBank.USUARIO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\WSBank\AppBankC.WSBank.USUARIOS.datasource">

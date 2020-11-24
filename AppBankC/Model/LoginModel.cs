@@ -16,9 +16,9 @@ namespace AppBankC.Model
             client = new Service1Client();              
         }
         
-        public USER[] GetUsuario(string user, string pass)
+        public USUARIO[] GetUsuario(string user, string pass)
         {
-            USER[] usuario;
+            USUARIO[] usuario;
             try
             {
                 usuario = client.GetUserByUserAndPass(user, pass);
